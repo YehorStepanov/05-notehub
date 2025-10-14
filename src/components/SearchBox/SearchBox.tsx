@@ -18,7 +18,7 @@ export default function SearchBox({onChange,setPage}:SearchBoxProps) {
   useEffect(() => {
     setPage(1);    
     onChange(text);
-  }, [text, onChange]);
+  }, [text, onChange,setPage]);
   
   return <input onChange={handleChange}  className={css.input} type="text" placeholder="Search notes" />;
 }
