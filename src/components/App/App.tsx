@@ -48,7 +48,7 @@ function App() {
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
-        <SearchBox onChange={setRequest}/>
+        <SearchBox onChange={setRequest} setPage={setPage}/>
         {data && data?.totalPages > 1 && <Pagination totalPages={data.totalPages} setPage={setPage} page={page}/>}
         <button onClick={toggleModal} className={css.button}>
           Create note +
