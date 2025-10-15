@@ -22,7 +22,7 @@ export async function fetchNotes(page:number, search:string ) : Promise<NoteResp
 }
 export async function createNote(note: AddNoteFormValue) {
   const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
-  const res = await axios.post("https://notehub-public.goit.study/api/notes", note,{
+  const res = await axios.post<Note>("https://notehub-public.goit.study/api/notes", note,{
     headers: {
       Authorization: `Bearer ${myKey}`
     }
@@ -31,7 +31,7 @@ export async function createNote(note: AddNoteFormValue) {
 }
 export async function deleteNote(id: string) {
   const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
-  const res = await axios.delete(`https://notehub-public.goit.study/api/notes/${id}`,{
+  const res = await axios.delete<{ message: string }>(`https://notehub-public.goit.study/api/notes/${id}`,{
     headers: {
       Authorization: `Bearer ${myKey}`
     }

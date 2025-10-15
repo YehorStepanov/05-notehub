@@ -2,12 +2,12 @@ export interface Note {
   id: string;
   title: string;
   content: string;
-  createdAt: number;
-  updatedAt: number;
-  tag: string;
+  createdAt: string;
+  updatedAt: string;
+  tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
 }
 
-export interface AddNoteFormValue{
+export interface AddNoteFormValue {
   title: string;
   content: string;
   tag: string;
