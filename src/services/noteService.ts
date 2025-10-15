@@ -31,7 +31,7 @@ export async function createNote(note: AddNoteFormValue) {
 }
 export async function deleteNote(id: string) {
   const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
-  const res = await axios.delete<{ message: string }>(`https://notehub-public.goit.study/api/notes/${id}`,{
+  const res = await axios.delete<Note>(`https://notehub-public.goit.study/api/notes/${id}`,{
     headers: {
       Authorization: `Bearer ${myKey}`
     }

@@ -9,16 +9,18 @@ import Pagination from "../Pagination/Pagination";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
 import NoteForm from "../NoteForm/NoteForm";
+import { useDebounce } from "use-debounce";
 function App() {
   const [page, setPage] = useState<number>(1);
   const [request, setRequest] = useState<string>("");
+  const [debouncedRequest] = useDebounce(request, 800);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const toggleModal = () => {
     setOpenModal(!openModal);
   };
   const { data, isError, isFetching } = useQuery({
-    queryKey: ["notes", page, request],
-    queryFn: () => fetchNotes(page, request),
+    queryKey: ["notes", page, debouncedRequest],
+    queryFn: () => fetchNotes(page, debouncedRequest),
     retry: false,
     placeholderData: (prev) => prev,
   });
